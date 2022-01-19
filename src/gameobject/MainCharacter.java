@@ -14,8 +14,8 @@ import util.Resource;
 
 public class MainCharacter {
 
-	public static final int LAND_POSY = 80;
-	public static final float GRAVITY = 0.4f;
+	public static final int LAND_POSY = 280;
+	public static final float GRAVITY = 0.27f;
 	
 	private static final int NORMAL_RUN = 0;
 	private static final int JUMPING = 1;
@@ -46,12 +46,13 @@ public class MainCharacter {
 		posY = LAND_POSY;
 		rectBound = new Rectangle();
 		normalRunAnim = new Animation(90);
-		normalRunAnim.addFrame(Resource.getResouceImage("data/main-character1.png"));
-		normalRunAnim.addFrame(Resource.getResouceImage("data/main-character2.png"));
-		jumping = Resource.getResouceImage("data/main-character3.png");
+		normalRunAnim.addFrame(Resource.getResouceImage("data/running-1.png"));
+                normalRunAnim.addFrame(Resource.getResouceImage("data/running-2.png"));
+		normalRunAnim.addFrame(Resource.getResouceImage("data/running-3.png"));
+                normalRunAnim.addFrame(Resource.getResouceImage("data/running-4.png"));
+		jumping = Resource.getResouceImage("data/jumping-2.png");
 		downRunAnim = new Animation(90);
-		downRunAnim.addFrame(Resource.getResouceImage("data/main-character5.png"));
-		downRunAnim.addFrame(Resource.getResouceImage("data/main-character6.png"));
+                downRunAnim.addFrame(Resource.getResouceImage("data/down-4.png"));
 		deathImage = Resource.getResouceImage("data/main-character4.png");
 		
 		try {
@@ -80,7 +81,7 @@ public class MainCharacter {
 				g.drawImage(jumping, (int) posX, (int) posY, null);
 				break;
 			case DOWN_RUN:
-				g.drawImage(downRunAnim.getFrame(), (int) posX, (int) (posY + 20), null);
+				g.drawImage(downRunAnim.getFrame(), (int) posX, (int) (posY + 130), null);
 				break;
 			case DEATH:
 				g.drawImage(deathImage, (int) posX, (int) posY, null);
@@ -110,9 +111,9 @@ public class MainCharacter {
 			if(jumpSound != null) {
 				jumpSound.play();
 			}
-			speedY = -7.5f;
+			speedY = -8.8f;
 			posY += speedY;
-			state = JUMPING;
+			state = JUMPING;  
 		}
 	}
 	

@@ -19,8 +19,8 @@ public class EnemiesManager {
 	
 	public EnemiesManager(MainCharacter mainCharacter) {
 		rand = new Random();
-		cactus1 = Resource.getResouceImage("data/cactus1.png");
-		cactus2 = Resource.getResouceImage("data/cactus2.png");
+		cactus1 = Resource.getResouceImage("data/cono-1.png");
+		cactus2 = Resource.getResouceImage("data/cono-2.png");
 		enemies = new ArrayList<Enemy>();
 		this.mainCharacter = mainCharacter;
 		enemies.add(createEnemy());
