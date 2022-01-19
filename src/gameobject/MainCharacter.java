@@ -53,7 +53,7 @@ public class MainCharacter {
 		jumping = Resource.getResouceImage("data/jumping-2.png");
 		downRunAnim = new Animation(90);
                 downRunAnim.addFrame(Resource.getResouceImage("data/down-4.png"));
-		deathImage = Resource.getResouceImage("data/main-character4.png");
+		deathImage = Resource.getResouceImage("data/death.png");
 		
 		try {
 			jumpSound =  Applet.newAudioClip(new URL("file","","data/jump.wav"));
@@ -84,7 +84,7 @@ public class MainCharacter {
 				g.drawImage(downRunAnim.getFrame(), (int) posX, (int) (posY + 130), null);
 				break;
 			case DEATH:
-				g.drawImage(deathImage, (int) posX, (int) posY, null);
+				g.drawImage(deathImage, (int) posX, (int) (posY + 180), null);
 				break;
 		}
 //		Rectangle bound = getBound();
