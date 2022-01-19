@@ -11,7 +11,7 @@ import util.Resource;
 
 public class Land {
 	
-	public static final int LAND_POSY = 103;
+	public static final int LAND_POSY = 500;
 	
 	private List<ImageLand> listLand;
 	private BufferedImage land1;

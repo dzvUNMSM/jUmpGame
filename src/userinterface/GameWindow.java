@@ -4,13 +4,13 @@ import javax.swing.JFrame;
 
 public class GameWindow extends JFrame {
 	
-	public static final int SCREEN_WIDTH = 600;
+	public static final int SCREEN_WIDTH = 800;
 	private GameScreen gameScreen;
 	
 	public GameWindow() {
 		super("probando cambios");
-		setSize(SCREEN_WIDTH, 175);
-		setLocation(400, 200);
+		setSize(SCREEN_WIDTH, 600);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		

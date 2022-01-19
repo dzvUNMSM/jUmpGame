@@ -14,7 +14,7 @@ import util.Resource;
 
 public class MainCharacter {
 
-	public static final int LAND_POSY = 80;
+	public static final int LAND_POSY = 480;
 	public static final float GRAVITY = 0.4f;
 	
 	private static final int NORMAL_RUN = 0;

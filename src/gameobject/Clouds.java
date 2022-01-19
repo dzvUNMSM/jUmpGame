@@ -22,27 +22,27 @@ public class Clouds {
 		
 		ImageCloud imageCloud = new ImageCloud();
 		imageCloud.posX = 0;
-		imageCloud.posY = 30;
+		imageCloud.posY = 30 +100;
 		listCloud.add(imageCloud);
 		
 		imageCloud = new ImageCloud();
 		imageCloud.posX = 150;
-		imageCloud.posY = 40;
+		imageCloud.posY = 40+100;
 		listCloud.add(imageCloud);
 		
 		imageCloud = new ImageCloud();
 		imageCloud.posX = 300;
-		imageCloud.posY = 50;
+		imageCloud.posY = 50+100;
 		listCloud.add(imageCloud);
 		
 		imageCloud = new ImageCloud();
 		imageCloud.posX = 450;
-		imageCloud.posY = 20;
+		imageCloud.posY = 20+100;
 		listCloud.add(imageCloud);
 		
 		imageCloud = new ImageCloud();
 		imageCloud.posX = 600;
-		imageCloud.posY = 60;
+		imageCloud.posY = 60+100;
 		listCloud.add(imageCloud);
 	}
 	

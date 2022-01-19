@@ -77,11 +77,10 @@ public class GameScreen extends JPanel implements Runnable, KeyListener {
 			enemiesManager.draw(g);
 			mainCharacter.draw(g);
 			g.setColor(Color.BLACK);
-			g.drawString("HI " + mainCharacter.score, 500, 20);
+			g.drawString("HI " + mainCharacter.score, 680, 60);
 			if (gameState == GAME_OVER_STATE) {
-				g.drawImage(gameOverButtonImage, 200, 30, null);
-				g.drawImage(replayButtonImage, 283, 50, null);
-				
+				g.drawImage(gameOverButtonImage, 300, 200, null);
+				g.drawImage(replayButtonImage, 380, 240, null);
 			}
 			break;
 		}
