@@ -32,7 +32,8 @@ public class GameScreen extends JPanel implements Runnable, KeyListener {
 
 	private BufferedImage replayButtonImage;
 	private BufferedImage gameOverButtonImage;
-
+        private BufferedImage bgImage;
+        
 	public GameScreen() {
 		mainCharacter = new MainCharacter();
 		land = new Land(GameWindow.SCREEN_WIDTH, mainCharacter);
@@ -41,6 +42,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener {
 		gameOverButtonImage = Resource.getResouceImage("data/gameover_text.png");
 		enemiesManager = new EnemiesManager(mainCharacter);
 		clouds = new Clouds(GameWindow.SCREEN_WIDTH, mainCharacter);
+                bgImage = Resource.getResouceImage("data/field.png");
 	}
 
 	public void startGame() {
@@ -63,14 +65,16 @@ public class GameScreen extends JPanel implements Runnable, KeyListener {
 	}
 
 	public void paint(Graphics g) {
-		g.setColor(Color.decode("#f7f7f7"));
+		//g.setColor(Color.decode("#f7f7f7"));
 		g.fillRect(0, 0, getWidth(), getHeight());
 
 		switch (gameState) {
 		case START_GAME_STATE:
+                        g.drawImage(bgImage, WIDTH, WIDTH, this);
 			mainCharacter.draw(g);
 			break;
 		case GAME_PLAYING_STATE:
+                        g.drawImage(bgImage, WIDTH, WIDTH, this);
 		case GAME_OVER_STATE:
 			clouds.draw(g);
 			land.draw(g);
@@ -79,13 +83,21 @@ public class GameScreen extends JPanel implements Runnable, KeyListener {
 			g.setColor(Color.BLACK);
 			g.drawString("HI " + mainCharacter.score, 680, 60);
 			if (gameState == GAME_OVER_STATE) {
-				g.drawImage(gameOverButtonImage, 300, 200, null);
-				g.drawImage(replayButtonImage, 380, 240, null);
+                            g.drawImage(bgImage, WIDTH, WIDTH, this);	
+                            g.drawImage(gameOverButtonImage, 300, 200, null);
+                            g.drawImage(replayButtonImage, 380, 240, null);
+                                
 			}
 			break;
 		}
 	}
 
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            g.drawImage(bgImage, 0, 0, null);
+        }
+        
 	@Override
 	public void run() {
 
