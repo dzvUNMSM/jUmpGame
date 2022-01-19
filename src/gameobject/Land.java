@@ -1,5 +1,5 @@
 package gameobject;
-
+ 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import util.Resource;
 
 public class Land {
 	
-	public static final int LAND_POSY = 103;
+	public static final int LAND_POSY = 480;
 	
 	private List<ImageLand> listLand;
 	private BufferedImage land1;

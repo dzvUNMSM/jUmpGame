@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 
 public class Cactus extends Enemy {
 	
-	public static final int Y_LAND = 125;
+	public static final int Y_LAND = 540;
 	
 	private int posX;
 	private int width;
