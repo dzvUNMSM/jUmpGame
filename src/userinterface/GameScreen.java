@@ -141,6 +141,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener {
 				if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 					gameState = GAME_PLAYING_STATE;
 					resetGame();
+                                        mainCharacter.score = 0;
 				}
 				break;
 
