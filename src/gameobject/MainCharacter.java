@@ -50,9 +50,9 @@ public class MainCharacter {
                 normalRunAnim.addFrame(Resource.getResouceImage("data/running-2.png"));
 		normalRunAnim.addFrame(Resource.getResouceImage("data/running-3.png"));
                 normalRunAnim.addFrame(Resource.getResouceImage("data/running-4.png"));
-		jumping = Resource.getResouceImage("data/jumping-2.png");
+		jumping = Resource.getResouceImage("data/jumping.png");
 		downRunAnim = new Animation(90);
-                downRunAnim.addFrame(Resource.getResouceImage("data/down-4.png"));
+                downRunAnim.addFrame(Resource.getResouceImage("data/down-run.png"));
 		deathImage = Resource.getResouceImage("data/death.png");
 		
 		try {
@@ -87,9 +87,6 @@ public class MainCharacter {
 				g.drawImage(deathImage, (int) posX, (int) (posY + 180), null);
 				break;
 		}
-//		Rectangle bound = getBound();
-//		g.setColor(Color.RED);
-//		g.drawRect(bound.x, bound.y, bound.width, bound.height);
 	}
 	
 	public void update() {
@@ -132,7 +129,7 @@ public class MainCharacter {
 		rectBound = new Rectangle();
 		if(state == DOWN_RUN) {
 			rectBound.x = (int) posX + 5;
-			rectBound.y = (int) posY + 20;
+			rectBound.y = (int) posY + 130;
 			rectBound.width = downRunAnim.getFrame().getWidth() - 10;
 			rectBound.height = downRunAnim.getFrame().getHeight();
 		} else {

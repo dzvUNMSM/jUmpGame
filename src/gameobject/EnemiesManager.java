@@ -10,8 +10,8 @@ import util.Resource;
 
 public class EnemiesManager {
 	
-	private BufferedImage cactus1;
-	private BufferedImage cactus2;
+	private BufferedImage cono1;
+	private BufferedImage cono2;
 	private Random rand;
 	
 	private List<Enemy> enemies;
@@ -19,8 +19,8 @@ public class EnemiesManager {
 	
 	public EnemiesManager(MainCharacter mainCharacter) {
 		rand = new Random();
-		cactus1 = Resource.getResouceImage("data/cono-1.png");
-		cactus2 = Resource.getResouceImage("data/cono-2.png");
+		cono1 = Resource.getResouceImage("data/cono-1.png");
+		cono2 = Resource.getResouceImage("data/cono-2.png");
 		enemies = new ArrayList<Enemy>();
 		this.mainCharacter = mainCharacter;
 		enemies.add(createEnemy());
@@ -48,9 +48,9 @@ public class EnemiesManager {
 		// if (enemyType = getRandom)
 		int type = rand.nextInt(2);
 		if(type == 0) {
-			return new Cactus(mainCharacter, 800, cactus1.getWidth() - 10, cactus1.getHeight() - 10, cactus1);
+			return new Cono(mainCharacter, 800, cono1.getWidth() - 10, cono1.getHeight() - 10, cono1);
 		} else {
-			return new Cactus(mainCharacter, 800, cactus2.getWidth() - 10, cactus2.getHeight() - 10, cactus2);
+			return new Cono(mainCharacter, 800, cono2.getWidth() - 10, cono2.getHeight() - 10, cono2);
 		}
 	}
 	

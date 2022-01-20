@@ -8,10 +8,10 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-import gameobject.Clouds;
 import gameobject.EnemiesManager;
 import gameobject.Land;
 import gameobject.MainCharacter;
+import java.awt.Font;
 import util.Resource;
 
 public class GameScreen extends JPanel implements Runnable, KeyListener {
@@ -23,24 +23,26 @@ public class GameScreen extends JPanel implements Runnable, KeyListener {
 	private Land land;
 	private MainCharacter mainCharacter;
 	private EnemiesManager enemiesManager;
-	private Clouds clouds;
 	private Thread thread;
 
 	private boolean isKeyPressed;
 
 	private int gameState = START_GAME_STATE;
 
-	private BufferedImage replayButtonImage;
+	private BufferedImage logo;
+        private BufferedImage bg;
+        private BufferedImage replayButtonImage;
 	private BufferedImage gameOverButtonImage;
 
 	public GameScreen() {
 		mainCharacter = new MainCharacter();
 		land = new Land(GameWindow.SCREEN_WIDTH, mainCharacter);
 		mainCharacter.setSpeedX(4);
+                bg = Resource.getResouceImage("data/bg-1.png");
+                logo = Resource.getResouceImage("data/logo.png");
 		replayButtonImage = Resource.getResouceImage("data/replay_button.png");
-		gameOverButtonImage = Resource.getResouceImage("data/gameover_text.png");
+		gameOverButtonImage = Resource.getResouceImage("data/gameover.png");
 		enemiesManager = new EnemiesManager(mainCharacter);
-		clouds = new Clouds(GameWindow.SCREEN_WIDTH, mainCharacter);
 	}
 
 	public void startGame() {
@@ -50,7 +52,6 @@ public class GameScreen extends JPanel implements Runnable, KeyListener {
 
 	public void gameUpdate() {
 		if (gameState == GAME_PLAYING_STATE) {
-			clouds.update();
 			land.update();
 			mainCharacter.update();
 			enemiesManager.update();
@@ -63,24 +64,27 @@ public class GameScreen extends JPanel implements Runnable, KeyListener {
 	}
 
 	public void paint(Graphics g) {
-		g.setColor(Color.decode("#f7f7f7"));
 		g.fillRect(0, 0, getWidth(), getHeight());
 
 		switch (gameState) {
 		case START_GAME_STATE:
+                        g.drawImage(bg,0,0,null); 
+                        g.drawImage(logo,150,100,null);
+                        g.setFont(new Font("Arial Black",Font.PLAIN,20));
+                        g.drawString("Presiona espacio para comenzar", 210, 220);
 			mainCharacter.draw(g);
 			break;
 		case GAME_PLAYING_STATE:
 		case GAME_OVER_STATE:
-			clouds.draw(g);
 			land.draw(g);
 			enemiesManager.draw(g);
 			mainCharacter.draw(g);
 			g.setColor(Color.BLACK);
-			g.drawString("HI " + mainCharacter.score, 500, 20);
+                        g.setFont(new Font("Arial Black",Font.BOLD,20));
+			g.drawString("Score:  " + mainCharacter.score, 630, 70);
 			if (gameState == GAME_OVER_STATE) {
-				g.drawImage(gameOverButtonImage, 200, 30, null);
-				g.drawImage(replayButtonImage, 283, 50, null);
+				g.drawImage(gameOverButtonImage, 300, 200, null);
+				g.drawImage(replayButtonImage, 370, 300, null);
 				
 			}
 			break;
@@ -127,7 +131,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener {
 			isKeyPressed = true;
 			switch (gameState) {
 			case START_GAME_STATE:
-				if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+				if (e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_UP) {
 					gameState = GAME_PLAYING_STATE;
 				}
 				break;
@@ -139,9 +143,10 @@ public class GameScreen extends JPanel implements Runnable, KeyListener {
 				}
 				break;
 			case GAME_OVER_STATE:
-				if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+				if (e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_UP) {
 					gameState = GAME_PLAYING_STATE;
 					resetGame();
+                                        mainCharacter.score = 0;
 				}
 				break;
 

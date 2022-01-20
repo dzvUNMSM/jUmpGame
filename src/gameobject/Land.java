@@ -11,20 +11,18 @@ import util.Resource;
 
 public class Land {
 	
-	public static final int LAND_POSY = 480;
-	
+	public static final int LAND_POSY = 0;
+	private int typeLand = 1;
 	private List<ImageLand> listLand;
 	private BufferedImage land1;
 	private BufferedImage land2;
-	private BufferedImage land3;
 	
 	private MainCharacter mainCharacter;
-	
+	 
 	public Land(int width, MainCharacter mainCharacter) {
 		this.mainCharacter = mainCharacter;
-		land1 = Resource.getResouceImage("data/land1.png");
-		land2 = Resource.getResouceImage("data/land2.png");
-		land3 = Resource.getResouceImage("data/land3.png");
+		land1 = Resource.getResouceImage("data/bg-1.png");
+		land2 = Resource.getResouceImage("data/bg-2.png");
 		int numberOfImageLand = width / land1.getWidth() + 2;
 		listLand = new ArrayList<ImageLand>();
 		for(int i = 0; i < numberOfImageLand; i++) {
@@ -54,31 +52,21 @@ public class Land {
 	}
 	
 	private void setImageLand(ImageLand imgLand) {
-		int typeLand = getTypeOfLand();
-		if(typeLand == 1) {
-			imgLand.image = land1;
-		} else if(typeLand == 3) {
-			imgLand.image = land3;
-		} else {
-			imgLand.image = land2;
-		}
+            while(typeLand <= 2){
+                if(typeLand == 1){
+                    imgLand.image = land1;
+                    typeLand++;          
+                }else{
+                    imgLand.image = land2;
+                    typeLand--;      
+                } 
+                break;   
+            }
 	}
 	
 	public void draw(Graphics g) {
 		for(ImageLand imgLand : listLand) {
 			g.drawImage(imgLand.image, (int) imgLand.posX, LAND_POSY, null);
-		}
-	}
-	
-	private int getTypeOfLand() {
-		Random rand = new Random();
-		int type = rand.nextInt(10);
-		if(type == 1) {
-			return 1;
-		} else if(type == 9) {
-			return 3;
-		} else {
-			return 2;
 		}
 	}
 	

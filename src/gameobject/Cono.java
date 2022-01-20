@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-public class Cactus extends Enemy {
+public class Cono extends Enemy {
 	
 	public static final int Y_LAND = 540;
 	
@@ -18,7 +18,7 @@ public class Cactus extends Enemy {
 	
 	private Rectangle rectBound;
 	
-	public Cactus(MainCharacter mainCharacter, int posX, int width, int height, BufferedImage image) {
+	public Cono(MainCharacter mainCharacter, int posX, int width, int height, BufferedImage image) {
 		this.posX = posX;
 		this.width = width;
 		this.height = height;
@@ -34,8 +34,6 @@ public class Cactus extends Enemy {
 	public void draw(Graphics g) {
 		g.drawImage(image, posX, Y_LAND - image.getHeight(), null);
 		g.setColor(Color.red);
-//		Rectangle bound = getBound();
-//		g.drawRect(bound.x, bound.y, bound.width, bound.height);
 	}
 	
 	public Rectangle getBound() {
@@ -49,10 +47,7 @@ public class Cactus extends Enemy {
 
 	@Override
 	public boolean isOutOfScreen() {
-		if(posX < -image.getWidth()) {
-			return true;
-		}
-		return false;
+		return posX < -image.getWidth();
 	}
 	
 }
