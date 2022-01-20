@@ -80,14 +80,18 @@ public class GameScreen extends JPanel implements Runnable, KeyListener {
 			land.draw(g);
 			enemiesManager.draw(g);
 			mainCharacter.draw(g);
-			g.setColor(Color.BLACK);
+			g.setColor(Color.WHITE);
 			g.drawString("HI " + mainCharacter.score, 680, 60);
-			if (gameState == GAME_OVER_STATE) {
-                            g.drawImage(bgImage, WIDTH, WIDTH, this);	
+			/*if (gameState == GAME_OVER_STATE) {
+                            g.drawImage(bgImage, WIDTH, WIDTH, this);
+                            clouds.draw(g);
+                            land.draw(g);
+                            enemiesManager.draw(g);
+                            mainCharacter.draw(g);
+                            g.drawString("HI " + mainCharacter.score, 680, 60);
                             g.drawImage(gameOverButtonImage, 300, 200, null);
-                            g.drawImage(replayButtonImage, 380, 240, null);
-                                
-			}
+                            g.drawImage(replayButtonImage, 380, 240, null);     
+			}*/
 			break;
 		}
 	}
@@ -138,7 +142,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener {
 			isKeyPressed = true;
 			switch (gameState) {
 			case START_GAME_STATE:
-				if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+				if (e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_UP) {
 					gameState = GAME_PLAYING_STATE;
 				}
 				break;
@@ -150,7 +154,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener {
 				}
 				break;
 			case GAME_OVER_STATE:
-				if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+				if (e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_UP) {
 					gameState = GAME_PLAYING_STATE;
 					resetGame();
                                         mainCharacter.score = 0;
